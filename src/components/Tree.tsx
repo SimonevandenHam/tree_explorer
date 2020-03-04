@@ -1,14 +1,9 @@
 import React from "react";
 import "./Tree.css";
-
-type Props = {
-  name: string;
-  scientificName: string;
-  numLikes: number;
-  handleClick: number;
-  id: number;
+import { TreeData } from "../model";
+interface Props extends TreeData {
   onLike: (myArg: number) => void;
-};
+}
 
 class Tree extends React.Component<Props> {
   handleLike = () => {
@@ -17,10 +12,12 @@ class Tree extends React.Component<Props> {
 
   render() {
     return (
-      <div className="treeCard">
-        <p>Name:{this.props.name}</p>
-        <p>Scientific name: {this.props.scientificName}</p>
-        <p>Number of likes: {this.props.numLikes}</p>
+      <div className="treeCardBox">
+        <div className="treeCard">
+          <p>Name:{this.props.name}</p>
+          <p>Scientific name: {this.props.scientificName}</p>
+          <p>Number of likes: {this.props.numLikes}</p>
+        </div>
         <button onClick={() => this.props.onLike(this.props.id)}>👍🌳</button>
       </div>
     );

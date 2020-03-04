@@ -1,14 +1,10 @@
 import React from "react";
 import Tree from "./Tree";
+import { TreeData } from "../model";
 
 type Props = {};
 type State = {
-  trees: Array<{
-    name: string;
-    scientificName: string;
-    numLikes: number;
-    id: number;
-  }>;
+  trees: Array<TreeData>;
   commonName: string;
   scientificName: string;
   numLikes: number;
@@ -59,7 +55,7 @@ class PopularTrees extends React.Component<Props, State> {
     });
   };
 
-  handleLike = id => {
+  handleLike = (id: number) => {
     const updatedTree = this.state.trees.map(tree => {
       if (tree.id === id) {
         return { ...tree, numLikes: tree.numLikes + 1 };
